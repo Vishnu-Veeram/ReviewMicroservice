@@ -33,12 +33,8 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public Review getReview(Long companyId, Long reviewId) {
-        List<Review> reviews = reviewRepository.findByCompanyId(companyId);
-        return reviews.stream()
-                .filter(review -> review.getId().equals(reviewId))
-                .findFirst()
-                .orElse(null);
+    public Review getReview(Long reviewId) {
+        return reviewRepository.findById(reviewId).orElse(null);
     }
 
     @Override
